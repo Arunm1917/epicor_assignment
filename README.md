@@ -34,14 +34,12 @@ namespace student
             // TODO: This line of code loads data into the 'arunDataSet1.course12' table. You can move, or remove it, as needed.
             this.course12TableAdapter.Fill(this.arunDataSet1.course12);
             datagrid();
-           
         }
         private void cmdsave_Click(object sender, EventArgs e)
         {
             con.Open();
-            string query = "Insert into course12(id,name,desp,email,dob) values ('" + txtid.Text.ToString().Trim() + "','" +       txtname.Text.ToString().Trim() + "','" + txtdesp.Text.ToString().Trim() + "','" + txtemail.Text.ToString().Trim() + "','" + txtdob.Text.ToString().Trim() + "')";
+            string query = "Insert into course12(id,name,desp,email,dob) values ('" + txtid.Text.ToString().Trim() + "','" +                      txtname.Text.ToString().Trim() + "','" + txtdesp.Text.ToString().Trim() + "','" + txtemail.Text.ToString().Trim() + "','"             + txtdob.Text.ToString().Trim() + "')";
             SqlCommand cmd = new SqlCommand(query, con);
-            
             cmd.ExecuteNonQuery();
             MessageBox.Show("INserted");
             datagrid();
@@ -52,9 +50,7 @@ namespace student
             txtdesp.Clear();
             txtemail.Clear();
             txtdob.Clear();
-
         }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = dataGridView1.CurrentCell.RowIndex;
@@ -86,7 +82,7 @@ namespace student
             else e.Cancel = true;
             if (e.Cancel)
             {
-                if (MessageBox.Show("Wrong date format. The correct format is dd-mm-yyyy\n+ dd should be between 1 and 31.\n+ mm should be between 1 and 12.\n+ yyyy should be before 2013", "Invalid date", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.Cancel)
+                if (MessageBox.Show("Wrong date format. The correct format is dd-mm-yyyy\n+ dd should be between 1 and 31.\n+ mm                      should be between 1 and 12.\n+ yyyy should be before 2013", "Invalid date", MessageBoxButtons.OKCancel,                               MessageBoxIcon.Error) == DialogResult.Cancel)
                     e.Cancel = false;
             }
         }
