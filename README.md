@@ -17,8 +17,7 @@ namespace student
         SqlConnection con = new SqlConnection(path);
         public Form1()
         {
-
-            InitializeComponent();
+          InitializeComponent();
         }
         public void datagrid()
         {
@@ -27,24 +26,20 @@ namespace student
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
-
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'arunDataSet3.course12' table. You can move, or remove it, as needed.
             this.course12TableAdapter1.Fill(this.arunDataSet3.course12);
-
             // TODO: This line of code loads data into the 'arunDataSet1.course12' table. You can move, or remove it, as needed.
             this.course12TableAdapter.Fill(this.arunDataSet1.course12);
-
-   
             datagrid();
            
         }
         private void cmdsave_Click(object sender, EventArgs e)
         {
             con.Open();
-            string query = "Insert into course12(id,name,desp,email,dob) values ('" + txtid.Text.ToString().Trim() + "','" + txtname.Text.ToString().Trim() + "','" + txtdesp.Text.ToString().Trim() + "','" + txtemail.Text.ToString().Trim() + "','" + txtdob.Text.ToString().Trim() + "')";
+            string query = "Insert into course12(id,name,desp,email,dob) values ('" + txtid.Text.ToString().Trim() + "','" +       txtname.Text.ToString().Trim() + "','" + txtdesp.Text.ToString().Trim() + "','" + txtemail.Text.ToString().Trim() + "','" + txtdob.Text.ToString().Trim() + "')";
             SqlCommand cmd = new SqlCommand(query, con);
             
             cmd.ExecuteNonQuery();
@@ -63,7 +58,6 @@ namespace student
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = dataGridView1.CurrentCell.RowIndex;
-
             txtid.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
             txtname.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
             txtdesp.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
@@ -71,18 +65,13 @@ namespace student
             txtdob.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
             txtid.Enabled = false;
         }
-
         private void cmdclose_Click(object sender, EventArgs e)
         {
             this.Close();
-
         }
-
         private void txtdob_TextChanged(object sender, EventArgs e)
         {
-
         }
-
         private void txtdob_Validating(object sender, CancelEventArgs e)
         {
             Regex reg = new Regex(@"^([0-2]\d)-([0-2]\d)-(\d{4})$");
